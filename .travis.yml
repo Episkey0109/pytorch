@@ -17,7 +17,8 @@ install:
   # Create an environment and install dependencies
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - conda activate test-environment
-  - conda install intel::mkl-static intel::mkl-include
+  - conda install cmake ninja intel::mkl-static intel::mkl-include
+  - pip install -r requirements.txt
   - export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
   - python setup.py develop
 
